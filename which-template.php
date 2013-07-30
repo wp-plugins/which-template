@@ -16,7 +16,7 @@ http://wordpress.org/extend/plugins/which-template
 
 4) Activate the plugin.
 
-Version: 1.0
+Version: 2.0
 Author: TheOnlineHero - Tom Skroza
 License: GPL2
 */
@@ -24,19 +24,44 @@ License: GPL2
 add_action("admin_bar_menu", "which_template_customize_menu");
 
 function which_template_customize_menu() {
-    global $wp_admin_bar;
-		$template = get_post_meta( get_the_id(), '_wp_page_template', true );
-		if ($template != "") {
-			$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=".$template."&theme=".wp_get_theme()->Template;
-			if ($template_link != "") {
-				$wp_admin_bar->add_menu(array(
-				   "id" => "whichtemplatemenu",
-				   "title" => "Template: ".$template,
-				   "href" => $template_link,
-				   "meta" => array("target" => "blank")
-				));
-			}
-		}
+  global $wp_admin_bar;
+	$template = get_post_meta( get_the_id(), '_wp_page_template', true );
+	$template_link = "";
+	if ($template != "") {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=".$template."&theme=".wp_get_theme()->Template;
+	} else if (is_page(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=page.php&theme=".wp_get_theme()->Template;
+		$template = "page.php";
+	} else if (is_single(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=single.php&theme=".wp_get_theme()->Template;
+		$template = "single.php";
+	}	else if (is_search(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=search.php&theme=".wp_get_theme()->Template;
+		$template = "search.php";
+	} else if (is_category(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=category.php&theme=".wp_get_theme()->Template;
+		$template = "category.php";
+	} else if (is_archive(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=archive.php&theme=".wp_get_theme()->Template;
+		$template = "archive.php";
+	} else if (is_tag(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=tag.php&theme=".wp_get_theme()->Template;
+		$template = "tag.php";
+	} else if (is_404(get_the_id())) {
+		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=404.php&theme=".wp_get_theme()->Template;
+		$template = "404.php";
+	}
+
+	if ($template_link != "") {
+		$wp_admin_bar->add_menu(
+			array(
+			  "id" => "whichtemplatemenu",
+			  "title" => "Template: ".$template,
+			  "href" => $template_link,
+			  "meta" => array("target" => "blank")
+			)
+		);
+	}
 }
 
 ?>
