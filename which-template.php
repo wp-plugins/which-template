@@ -16,52 +16,46 @@ http://wordpress.org/extend/plugins/which-template
 
 4) Activate the plugin.
 
-Version: 2.0
+Version: 3.0
 Author: TheOnlineHero - Tom Skroza
 License: GPL2
 */
 
-add_action("admin_bar_menu", "which_template_customize_menu");
+add_filter('template_include', 'which_template_template_include', 1000);
+function which_template_template_include($template) {
+	// Check if your on an admin page.
+  if (is_admin()) {
+  	// On admin page so don't display menu link.
+  	return;
+  } 
+  // Check to see if user is logged in.
+  if (is_user_logged_in()) {
+  	// User is logged in so define constant for use later on.
+		define('WHICH_TEMPLATE_USED', ltrim(strrchr($template, '/'), '/'));
+    add_filter('admin_bar_menu', 'which_template_admin_bar_menu', 1000);
+  }
+  return $template;
+}
 
-function which_template_customize_menu() {
-  global $wp_admin_bar;
-	$template = get_post_meta( get_the_id(), '_wp_page_template', true );
-	$template_link = "";
-	if ($template != "") {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=".$template."&theme=".wp_get_theme()->Template;
-	} else if (is_page()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=page.php&theme=".wp_get_theme()->Template;
-		$template = "page.php";
-	} else if (is_single()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=single.php&theme=".wp_get_theme()->Template;
-		$template = "single.php";
-	}	else if (is_search()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=search.php&theme=".wp_get_theme()->Template;
-		$template = "search.php";
-	} else if (is_category()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=category.php&theme=".wp_get_theme()->Template;
-		$template = "category.php";
-	} else if (is_archive()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=archive.php&theme=".wp_get_theme()->Template;
-		$template = "archive.php";
-	} else if (is_tag()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=tag.php&theme=".wp_get_theme()->Template;
-		$template = "tag.php";
-	} else if (is_404()) {
-		$template_link = get_option("siteurl")."/wp-admin/theme-editor.php?file=404.php&theme=".wp_get_theme()->Template;
-		$template = "404.php";
-	}
 
-	if ($template_link != "") {
-		$wp_admin_bar->add_menu(
-			array(
-			  "id" => "whichtemplatemenu",
-			  "title" => "Template: ".$template,
-			  "href" => $template_link,
-			  "meta" => array("target" => "blank")
-			)
-		);
-	}
+function which_template_admin_bar_menu($template) {
+	// Check if your on an admin page.
+  if (is_admin()) {
+  	// On admin page so don't display menu link.
+  	return;
+  } 
+  // Check if user is logged in.
+  if (is_user_logged_in()) {
+  	// User is logged in, so display template info.
+  	global $wp_admin_bar;
+  	$link = get_option("siteurl")."/wp-admin/theme-editor.php?file=".WHICH_TEMPLATE_USED."&theme=".wp_get_theme()->Template;
+	  $wp_admin_bar->add_menu(
+      array(
+        'id'      => "which_template_template_file",
+        'title'   => "<a target='_blank' href='".$link."' style='color:gold !important;'>Template file : ".WHICH_TEMPLATE_USED."</a>",
+      )
+	  );
+  }
 }
 
 ?>

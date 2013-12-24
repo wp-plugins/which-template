@@ -3,8 +3,8 @@ Contributors: MMDeveloper
 Donate link: 
 Tags: plugin, template, page, which, admin
 Requires at least: 3.3
-Tested up to: 3.5.2
-Stable tag: 2.0
+Tested up to: 3.8
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,8 @@ Work out which template your page is currently looking at.
 
 == Description ==
 
-A wordpress plugin that helps you work out which template your page is currently using. If you login to wordpress, visit your site, in the admin bar you will see a link to the template your page is using. It should say something like "Template: ...". Click on it and you will navigate to the actual template in a new tab.
+It's really difficult to find out which template your page is using, especially when your looking at the front-end of your site. With this plugin it makes it much easier. When you view your site, you will see an admin menu item called, "Template file: ...". If you click on this link, you will be navigated to the template in a new tab. This plugin will save you hours of time.
+
 
 == Installation ==
 
@@ -29,6 +30,10 @@ http://wordpress.org/extend/plugins/which-template
 
 == Changelog ==
 
+= 3.0 =
+
+* Much better engine for working out which template is used on a page.
+
 = 2.0 =
 
 * This version allows you to see if a page is using the page.php, single.php, 404.php, archive.php, tag.php, category.php or search.php template.
@@ -38,6 +43,10 @@ http://wordpress.org/extend/plugins/which-template
 * Initial Commit
 
 == Upgrade notice ==
+
+= 3.0 =
+
+* Much better engine for working out which template is used on a page.
 
 = 2.0 =
 
