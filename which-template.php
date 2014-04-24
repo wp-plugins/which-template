@@ -6,7 +6,7 @@ Description: Helps the admin user work out which template a particular page is u
 
 Installation:
 
-1) Install WordPress 3.5.2 or higher
+1) Install WordPress 3.9 or higher
 
 2) Download the latest from:
 
