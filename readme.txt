@@ -3,7 +3,7 @@ Contributors: MMDeveloper
 Donate link: 
 Tags: plugin, template, page, which, admin
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ It's really difficult to find out which template your page is using, especially 
 
 == Installation ==
 
-1) Install WordPress 3.5 or higher
+1) Install WordPress 3.9 or higher
 
 2) Download the latest from:
 
