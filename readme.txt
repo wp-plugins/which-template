@@ -3,8 +3,8 @@ Contributors: MMDeveloper
 Donate link: 
 Tags: plugin, template, page, which, admin
 Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 3.0
+Tested up to: 4.0
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ It's really difficult to find out which template your page is using, especially 
 
 == Installation ==
 
-1) Install WordPress 3.9 or higher
+1) Install WordPress 4.0 or higher
 
 2) Download the latest from:
 
@@ -29,6 +29,10 @@ http://wordpress.org/extend/plugins/which-template
 
 
 == Changelog ==
+
+= 4.0 =
+
+* You can now see which header, footer and sidebar template your using on your page.
 
 = 3.0 =
 
@@ -43,6 +47,10 @@ http://wordpress.org/extend/plugins/which-template
 * Initial Commit
 
 == Upgrade notice ==
+
+= 4.0 =
+
+* You can now see which header, footer and sidebar template your using on your page.
 
 = 3.0 =
 
