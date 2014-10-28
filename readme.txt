@@ -15,6 +15,9 @@ Work out which template your page is currently looking at.
 It's really difficult to find out which template your page is using, especially when your looking at the front-end of your site. With this plugin it makes it much easier. When you view your site, you will see an admin menu item called, "Template file: ...". If you click on this link, you will be navigated to the template in a new tab. This plugin will save you hours of time.
 
 
+Built by The Marketing Mix Perth: http://www.marketingmix.com.au
+
+
 == Installation ==
 
 1) Install WordPress 4.0 or higher
